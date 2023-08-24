@@ -9,13 +9,18 @@ var nodeuuid = {
         if(parent == null){
           return '';
         }
-        // 使用querySelectorAll()方法获取所有与node元素相同标签名的子节点
-        var children = parent.querySelectorAll(node.tagName);
-        // 使用indexOf()方法获取node元素在子节点集合中的位置
-        var index = Array.prototype.indexOf.call(children, node);
+
+        var childs;
         if(typeof(node.tagName) == 'undefined'){
-        	//console.log(node.nodeName+'==='+node.parentNode.nodeName);
+        	//console.log('undefi');
+        	childs = parent.childNodes;
+        	//console.log(Array.prototype.indexOf.call(childs, node));
+        }else{
+        	// 使用querySelectorAll()方法获取所有与node元素相同标签名的子节点
+	        childs = parent.querySelectorAll(node.tagName);
+	        // 使用indexOf()方法获取node元素在子节点集合中的位置
         }
+        var index = Array.prototype.indexOf.call(childs, node); 
         //console.log('--------'+node.tagName);
         return node.nodeName + "" + (index+1);
 	},
